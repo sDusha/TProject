@@ -1,0 +1,20 @@
+{% extends 'new_project/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="col-1-4 registration_body" align="center">
+    <h4 align="center">Словарь {{dict_name}}</h4>
+    {% if words%}
+        <ol class="registration_body">
+        {% for el in words%}
+                <li><p class="yellow element">{{el.russian_word}} : {{el.english_word}}</p></li>
+        {% endfor %}
+        </ol>
+    {%else%}
+    <h4>Словарь пуст!</h4>
+    {%endif%}
+</div>
+{% endblock %}

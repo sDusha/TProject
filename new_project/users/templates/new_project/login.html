@@ -1,0 +1,14 @@
+{% extends 'new_project/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+        <h1 align="center">Логин</h1>
+        <form method='post' class="registration_body">
+            {% csrf_token %}
+            {{ form.as_p  }}
+            <button type="submit" class="btn btn-primary btn-block" >Логин</button>
+        </form>
+{% endblock %}

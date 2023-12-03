@@ -1,0 +1,38 @@
+{% extends 'new_project/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    {% if words %}
+    <div class="card_body">
+        <h3>Карточки</h3>
+        <p>{{ words.english_word }}</p>
+        <form method="post" >
+            {%csrf_token%}
+            <input autofocus type="text" name="user_answer" class="form-control" size="120"><span>{{error}}</span>
+            <br><br>
+            <button type="submit" class="btn btn-success" >Добавить</button>
+            <label> Очков: {{ points }}</label>
+        </form>
+    </div>
+    <div class="col-1-4-20m">
+        <h3 align="center">Топ:</h3>
+        {% if top_users %}
+          <ol>
+              <div><li class="gold element">{{first}} Очков:{{first.words_points_record}}</li></div>
+              <div><li class="silver element">{{second}} Очков:{{second.words_points_record}}</li></div>
+              <div><li class="bronze element">{{third}} Очков:{{third.words_points_record}}</li></div>
+            {% for el in top_users %}
+              <div><li class="green element">{{el.username}} Очков:{{el.words_points_record}}</li></div>
+            {% endfor %}
+          </ol>
+          {% else %}
+            <p>Нет пользователей</p>
+          {% endif %}
+    </div>
+    {% else %}
+        <p>Нет слов</p>
+    {% endif %}
+{% endblock %}

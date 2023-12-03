@@ -1,0 +1,38 @@
+{% extends 'new_project/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="card_body">
+        <h4 align="center">Все словари</h4>
+        {% if all_dicts %}
+            {% for el in all_dicts %}
+                <div align="center"><a href="{% url 'watch_word' %}?dict_id={{el.id}}" type="button" class="btn btn-secondary m5 btn-sm w-50">
+                    <span class="a">{{el.name}} : {{el.difficult_lvl}} уровень</span>
+                    <span class="b">посмотреть</span>
+                </a></div>
+            {% endfor %}
+        {% else %}
+            <p>Нет слов</p>
+        {% endif %}
+    </div>
+    <div class="col-1-4">
+        <h4 align="center">Ваши словари</h4>
+
+          {% if dicts %}
+            {% for el in dicts %}
+              <div align="center"><a href="{% url 'add_word' %}?dict_id={{el.id}}" type="button" class="btn btn-secondary m5 btn-sm w-50">
+                    <span class="a">{{el.name}} : {{el.difficult_lvl}} уровень</span>
+                    <span class="b">Изменить</span>
+              </a></div>
+            {% endfor %}
+         <div align="center">
+           <a href="{% url 'createdict' %}" type="button" class="btn btn-outline-success m5 btn-sm">Создать новый словарь</a>
+         </div>
+          {% else %}
+            <p>Нет слов</p>
+          {% endif %}
+      </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'new_project/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="registration_body">
+    <h1 align="center">Изменение</h1>
+    <form method='post' class="registration_body" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p  }}
+        <button type="submit" class="btn btn-primary btn-block" >Редактировать</button>
+    </form>
+</div>
+{% endblock %}
